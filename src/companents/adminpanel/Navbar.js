@@ -29,6 +29,7 @@ const Navbar = () => {
         document.removeEventListener("click",handledrop)
       }
     })
+    
     const {data:session} = useSession()
     console.log(session.user.name)
   return (
