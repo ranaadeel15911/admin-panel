@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Auth from "@/companents/adminpanel/Auth"
+import App from "@/app/App"
+import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -9,13 +11,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body className={inter.className}>
         {/* <AuthProvider> */}
 {/* <AuthProvider> */}
 <Auth>
+  <App>
         {children}
+  </App>
+  <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
+  {/* remeber dnt import App from next/app   */}
 </Auth>
 {/* </AuthProvider> */}
         {/* </AuthProvider> */}

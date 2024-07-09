@@ -10,9 +10,16 @@ export default withUt({
   theme: {
     extend: {
       colors:{
-        pink:"#FD4B6B"
-      }
+        pink:"#FD4B6B",
+        accent:"#0989FF",
+        topHeadingPrimary:"#010f1c",
+        topHeadingSecondary:"#21d35",
+      },
+      container: {
+        center:true,
+        padding:'15px'
     },
   },
+},
   plugins: [],
 });

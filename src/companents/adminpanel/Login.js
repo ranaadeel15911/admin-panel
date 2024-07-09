@@ -3,12 +3,15 @@ import { signIn } from "next-auth/react";
 import React from "react";
 import {FcGoogle } from "react-icons/fc";
 const Login =()=>{
+    
 return (
 
 <div className="  bg-black min-h-screen grid place-items-center"> 
 <button
- className="  px-8 py-4 flex gap-2 items-center text-black" onClick={()=> signIn("google")} >
+ className="  px-8 py-4 flex gap-2 items-center text-white" onClick={()=> signIn("google")} >
+
     <FcGoogle size={30}/> Sign In with Google
+
 </button> 
  </div> )
 };

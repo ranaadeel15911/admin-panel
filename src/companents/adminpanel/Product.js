@@ -1,25 +1,33 @@
 'use client'
 import { UploadButton } from '@/utils/uploadthing'
-// import { UploadButton } from '@/utils/uploadthing'
 import axios from 'axios'
 import Image from 'next/image'
 import React, { useState } from 'react'
-
+import {useAppDispatch} from "../../redux/hooks"
+import { setLoading } from '../../redux/feautures/loadingslice'
+import { useRouter } from 'next/navigation'
+// import { UploadButton } from '@uploadthing/react'
 const Product = () => {
+  const router = useRouter()
     const [payload,setPayload] = useState({
         imgSrc:null,
         fileKey:null,
         name:'',
         category:'',
         price:''
+
     })
+    const dispatch = useAppDispatch()
+
     console.log(payload)
     const handleSubmit = (e) => {
         e.preventDefault()
+        dispatch(setLoading(true))
         axios.post("/api/addproduct",payload)
         .then(res => {
              console.log(res.data)
              console.log(res)
+router.push('/admin/dashboard')
              setPayload(
                 {
                     imgSrc:null,
@@ -30,7 +38,7 @@ const Product = () => {
                 }
              )
         })
-        .catch((err)=>console.log(err))
+        .catch((err)=>console.log(err)).finally(()=>dispatch(setLoading(false)))
         
     }
   return (
